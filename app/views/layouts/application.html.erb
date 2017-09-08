@@ -9,7 +9,14 @@
   </head>
 
   <body>
-      <%= nav_bar brand: "Home", brand_link: posts_path%>
+      <%= nav_bar brand: "Home", brand_link: posts_path do%>
+        <%=form_tag posts_path,method: :get, class:"navbar-form navbar-right" do%>
+          <div class="form-group">
+            <%= text_field_tag :tag,@search,class:"form-control"%>
+            <%= button_to "Search",nil,class:"btn btn-default"%>
+          </div>
+        <%end%>
+      <%end%>
       <div class="container">
         <%= yield %>
       </div>

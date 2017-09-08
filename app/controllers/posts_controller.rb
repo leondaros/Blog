@@ -4,12 +4,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @search = params[:tag]
+    @posts = Post.where "tag like ?", "%#{@search}%"
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @posts = Post.all
   end
 
   # GET /posts/new
