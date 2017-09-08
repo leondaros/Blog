@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @search = params[:tag]
-    @posts = Post.where "tag like ?", "%#{@search}%"
+    @posts = Post.search_by_tag @search
   end
 
   # GET /posts/1
